@@ -5,7 +5,9 @@ from typing import Mapping, Sequence, Any
 from utils import access_nested_map, get_json, memoize
 from unittest.mock import patch, Mock
 
+
 class TestAccessNestedMap(unittest.TestCase):
+    """Test cases for access_nested_map function."""
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
@@ -25,6 +27,7 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
+    """Test cases for get_json function."""
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
@@ -42,8 +45,10 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
+    """Test cases for memoize decorator."""
     def test_memoize(self):
         class TestClass:
+            """A test class to demonstrate memoization."""
             def a_method(self):
                 return 42
 
@@ -53,7 +58,8 @@ class TestMemoize(unittest.TestCase):
 
         test_obj = TestClass()
 
-        with patch.object(test_obj, 'a_method', wraps=test_obj.a_method) as mock_method:
+        with patch.object(test_obj, 'a_method', wraps=test_obj.a_method) \
+                as mock_method:
             # Call a_property twice
             result1 = test_obj.a_property
             result2 = test_obj.a_property

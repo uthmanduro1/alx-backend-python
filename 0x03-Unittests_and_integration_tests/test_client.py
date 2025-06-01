@@ -2,8 +2,9 @@
 import unittest
 from unittest.mock import patch, PropertyMock
 from parameterized import parameterized, parameterized_class
-from client import GithubOrgClient 
+from client import GithubOrgClient
 import fixtures
+
 
 class TestGithubOrgClient(unittest.TestCase):
     @parameterized.expand([
@@ -27,17 +28,6 @@ class TestGithubOrgClient(unittest.TestCase):
         expected_url = f"https://api.github.com/orgs/{org_name}"
         mock_get_json.assert_called_once_with(expected_url)
 
-
-    # def test_public_repos_url(self):
-    #     """Test that _public_repos_url returns the correct URL from org."""
-    #     client = GithubOrgClient("test_org")
-    #     expected_url = "https://api.github.com/orgs/test_org/repos"
-
-    #     with patch.object(GithubOrgClient, "org", new_callable=PropertyMock) as mock_org:
-    #         mock_org.return_value = {"repos_url": expected_url}
-    #         result = client._public_repos_url
-    #         self.assertEqual(result, expected_url)
-
     @patch("client.get_json")
     def test_public_repos(self, mock_get_json):
         """Test that public_repos returns the correct list of repo names."""
@@ -50,16 +40,18 @@ class TestGithubOrgClient(unittest.TestCase):
 
         mock_get_json.return_value = mock_payload
 
-        with patch.object(GithubOrgClient, "_public_repos_url", new_callable=PropertyMock) as mock_url:
-            mock_url.return_value = "https://api.github.com/orgs/test_org/repos"
+        with patch.object(GithubOrgClient, "_public_repos_url",
+                          new_callable=PropertyMock) as mock_url:
+            mock_url.return_value = \
+                "https://api.github.com/orgs/test_org/repos"
 
             client = GithubOrgClient("test_org")
             repos = client.public_repos()
 
             self.assertEqual(repos, ["repo1", "repo2", "repo3"])
             mock_url.assert_called_once()
-            mock_get_json.assert_called_once_with("https://api.github.com/orgs/test_org/repos")
-
+            mock_get_json.assert_called_once_with(
+                "https://api.github.com/orgs/test_org/repos")
 
     @parameterized.expand([
         ({"license": {"key": "my_license"}}, "my_license", True),
@@ -90,7 +82,8 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
         def side_effect(url, *args, **kwargs):
             mock_response = Mock()
-            if url == f"https://api.github.com/orgs/{cls.org_payload['login']}":
+            if url == f"https://api.github.com/orgs/{
+                    cls.org_payload['login']}":
                 mock_response.json.return_value = cls.org_payload
             elif url == cls.org_payload["repos_url"]:
                 mock_response.json.return_value = cls.repos_payload
