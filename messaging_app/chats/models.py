@@ -11,13 +11,14 @@ class User(AbstractUser):
     user_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, blank=True)
+    password = models.CharField(max_length=128)
 
-    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'phone_number']
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'phone_number', 'password']
     USERNAME_FIELD = 'username'
 
     def __str__(self):
         return self.username
-    
+
 
 class Conversation(models.Model):
     conversation_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
