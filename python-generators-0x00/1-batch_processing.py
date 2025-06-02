@@ -33,3 +33,4 @@ def batch_processing(batch_size):
         for user in batch:
             if float(user['age']) > 25:
                 print(user)
+                return user
