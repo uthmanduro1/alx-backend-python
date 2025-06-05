@@ -12,6 +12,8 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'first_name',
             'last_name',
+            'phone_number',
+
         ]
 
 
@@ -38,8 +40,8 @@ class ConversationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conversation
         fields = [
-            'conversation_id',   # UUID
-            'participants',      # ManyToMany (User)
-            'created_at',        # Timestamp
-            'messages',          # Nested messages
+            'conversation_id',  
+            'participants',      
+            'created_at',        
+            'messages',          
         ]
