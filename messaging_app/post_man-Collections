@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "a1d2242a-d1a3-49d9-9d1b-809430975704",
+		"name": "new",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29623996",
+		"_collection_link": "https://gold-eclipse-63841.postman.co/workspace/My-Workspace~0e3d873f-4f09-4cc0-8266-1a8844d83cb8/collection/29623996-a1d2242a-d1a3-49d9-9d1b-809430975704?action=share&source=collection_link&creator=29623996"
+	},
+	"item": [
+		{
+			"name": "python test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5ZjY3YjAwLTYzNmQtNDdjMy1hMjdjLWM2YzFkZTVkMmNmOSIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNzIyMDIyMjk3LCJleHAiOjE3MjIwMjU4OTd9.zaCr7niEB5ftyfXvmVQ3c6khaSM4e4x6hzuZPjZnYzY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"fullLegalName\": \"admin\",\r\n\t\"phoneNumber\": \"1234556\",\r\n\t\"email\": \"admin@gmail.com\",\r\n\t\"password\": \"Password1234$\",\r\n    \"username\": \"newest\", // Required and cannot be null\r\n\t\"description\": \"creating a new org\",\r\n    \"pin\": \"1234\",\r\n    \"dateOfBirth\": \"08/31/2005\",\r\n    \"address\": \"lawanson\",\r\n    \"role\": \"Admin\",\r\n    \"type\": \"Personal\",\r\n    \"confirmPin\": \"1234\"\r\n    // \"userId\": \"60db0599-7375-4937-aed3-b761d1b5330e\",\r\n    // \"is_super_admin\": \"no\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/user/register-step-two",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"register-step-two"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `",
+							"<style type=\"text/css\">",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+							"    .tftable tr {background-color:#ffffff;}",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+							"    .tftable tr:hover {background-color:#e0ffff;}",
+							"</style>",
+							"",
+							"<table class=\"tftable\" border=\"1\">",
+							"    <tr>",
+							"        <th>Product ID</th>",
+							"        <th>Product Name</th>",
+							"        <th>Product Price</th>",
+							"    </tr>",
+							"    ",
+							"    {{#each response}}",
+							"        <tr>",
+							"            <td>{{productId}}</td>",
+							"            <td>{{productName}}</td>",
+							"            <td>{{productPrice}}</td>",
+							"        </tr>",
+							"    {{/each}}",
+							"</table>",
+							"`;",
+							"",
+							"function constructVisualizerPayload() {",
+							"    return { response: pm.response.json() }",
+							"}",
+							"",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWE5MjI3OTk1ZTYwODIwMmI5YWFhMCIsImlhdCI6MTc0MzQyNjA4NywiZXhwIjoxNzQzNDI5Njg3fQ.dNG8k-74NifxOCXRl_QGksZp7GTRw3mqgo4M4BcaNjY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"uthman\",\n    \"email\": \"sadsasd@test.com\",\n    \"password\": \"sdfsdfdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/request-otp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"request-otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 12,\n    \"name\": \"eraser update\",\n    \"price\": 1200,\n    \"description\": \"descr\",\n    \"brand\": \"brand\",\n    \"category\": \"groceries\",\n    \"releaseDate\": \"31/08/2001\",\n    \"available\": true,\n    \"quantity\": 23\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `",
+							"<style type=\"text/css\">",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+							"    .tftable tr {background-color:#ffffff;}",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+							"    .tftable tr:hover {background-color:#e0ffff;}",
+							"</style>",
+							"",
+							"<table class=\"tftable\" border=\"1\">",
+							"    <tr>",
+							"        <th>Timestamp</th>",
+							"        <th>Status</th>",
+							"        <th>Error</th>",
+							"        <th>Trace</th>",
+							"        <th>Message</th>",
+							"        <th>Path</th>",
+							"    </tr>",
+							"    <tr>",
+							"        <td>{{response.timestamp}}</td>",
+							"        <td>{{response.status}}</td>",
+							"        <td>{{response.error}}</td>",
+							"        <td>{{response.trace}}</td>",
+							"        <td>{{response.message}}</td>",
+							"        <td>{{response.path}}</td>",
+							"    </tr>",
+							"</table>",
+							"`;",
+							"",
+							"function constructVisualizerPayload() {",
+							"    return {response: pm.response.json()};",
+							"}",
+							"",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/product/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"product",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 12,\n    \"name\": \"eraser update\",\n    \"price\": 1200,\n    \"description\": \"descr\",\n    \"brand\": \"brand\",\n    \"category\": \"groceries\",\n    \"releaseDate\": \"2001-12-12T12:23:23\",\n    \"available\": true,\n    \"quantity\": 23\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/product/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"product",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
