@@ -20,7 +20,7 @@ class RequestLoggingMiddleware(MiddlewareMixin):
             Path: {request.path}\n"
 
         # Write to a log file
-        with open('request.logs', 'a') as f:
+        with open('requests.log', 'a') as f:
             f.write(log_message)
 
         response = self.get_response(request)
@@ -48,7 +48,7 @@ class RestrictAccessByTimeMiddleware(MiddlewareMixin):
         return self.get_response(request)
 
 
-class RateLimitMiddleware(MiddlewareMixin):
+class OffensiveLanguageMiddleware(MiddlewareMixin):
     def __init__(self, get_response=None):
         super().__init__(get_response)
         # Store IP addresses and their request timestamps
@@ -95,7 +95,7 @@ class RateLimitMiddleware(MiddlewareMixin):
         ]
 
 
-class RolePermissionMiddleware(MiddlewareMixin):
+class RoleermissionMiddleware(MiddlewareMixin):
     def __init__(self, get_response=None):
         super().__init__(get_response)
         # Define protected paths (adjust as needed)
