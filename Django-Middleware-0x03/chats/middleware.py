@@ -95,7 +95,7 @@ class OffensiveLanguageMiddleware(MiddlewareMixin):
         ]
 
 
-class RoleermissionMiddleware(MiddlewareMixin):
+class RolepermissionMiddleware(MiddlewareMixin):
     def __init__(self, get_response=None):
         super().__init__(get_response)
         # Define protected paths (adjust as needed)
