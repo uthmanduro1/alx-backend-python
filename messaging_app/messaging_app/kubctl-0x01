@@ -1,0 +1,4 @@
+kubectl scale --current-replicas=1 --replicas=3 deployment/messaging-app
+kubectl get pods
+wrk -t2 -c4 -d3s http://127.0.0.1:8080/swagger
+kubectl top node
