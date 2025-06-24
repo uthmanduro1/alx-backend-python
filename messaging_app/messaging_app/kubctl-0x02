@@ -1,0 +1,3 @@
+kubectl apply -f green-deployment.yaml
+kubectl apply -f blue-deployment.yaml
+kubectl get logs
