@@ -19,7 +19,7 @@ pipeline {
                 withPythonEnv('venv') {
                     sh '''
                         cd messaging_app/messaging_app
-                        pip install -r requirements.txt
+                        pip3 install -r requirements.txt
                         pytest --junitxml=report.xml
                     '''
                 }
